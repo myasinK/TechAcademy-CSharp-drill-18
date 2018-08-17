@@ -9,12 +9,16 @@ namespace Inheritance
         public abstract void SayName();
     }
 
-    public class Employee : Person
+    public class Employee : Person, IQuittable
     {
         public int Id = 0;
         public override void SayName()
         {
             Console.WriteLine("Employee Name: " + FirstName + " " + LastName);
+        }
+        public void Quit()
+        {
+            Console.WriteLine("Employee " + Id + " quit");
         }
     }
 
@@ -22,10 +26,8 @@ namespace Inheritance
     {
         static void Main(string[] args)
         {
-            Employee employee = new Employee();
-            employee.FirstName = "Sample";
-            employee.LastName = "Student";
-            employee.SayName();
+            IQuittable employee = new Employee();
+            employee.Quit();
         }
     }
 }
